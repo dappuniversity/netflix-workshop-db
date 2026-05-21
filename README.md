@@ -52,7 +52,7 @@ npm run dev
 
 
 Add the posgres mcp server like this:
-````claude mcp add --scope user postgres npx -- -y @henkey/postgres-mcp-server --connection-string "postgresql://localhost:5432/streamkit"```
+```claude mcp add --scope user postgres npx -- -y @henkey/postgres-mcp-server --connection-string "postgresql://localhost:5432/streamkit"```
 
 Add the github mcp server like this:
 ```claude mcp add --scope user --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer ghp_yourtokenhere"```
