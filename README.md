@@ -29,7 +29,7 @@ createdb streamkit
 cp backend/.env.example backend/.env
 ```
 
-The default `backend/.env.example` points to `postgresql://localhost:5432/streamkit`. Edit `backend/.env` if your Postgres setup uses a different host, port, user, or password.
+Teh default `backend/.env.example` points to `postgresql://localhost:5432/streamkit`. Edit `backend/.env` if your Postgres setup uses a different host, port, user, or password.
 
 ### 4. Seed the database
 
