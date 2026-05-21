@@ -22,7 +22,16 @@
       "Bash(pkill -f \"server.js\")",
       "Bash(node *)",
       "mcp__postgres-test__pg_execute_query",
-      "mcp__github__list_commits"
+      "mcp__github__list_commits",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(gh pr *)",
+      "mcp__github__create_pull_request",
+      "mcp__github__merge_pull_request",
+      "Bash(git checkout *)",
+      "Bash(git pull *)",
+      "Bash(git branch *)"
     ]
   }
 }
