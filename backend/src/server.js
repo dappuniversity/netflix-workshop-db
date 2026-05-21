@@ -1,7 +1,8 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import {
-  catalog,
+  getAllSeries,
   findSeries,
   getFeaturedSeries,
   getGenres,
@@ -15,42 +16,43 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 
 // GET /api/catalog — all series
-app.get('/api/catalog', (_req, res) => {
-  res.json(catalog);
+app.get('/api/catalog', async (_req, res) => {
+  res.json(await getAllSeries());
 });
 
 // GET /api/catalog/featured — the hero series
 // NOTE: must be registered before /api/catalog/:id
-app.get('/api/catalog/featured', (_req, res) => {
-  res.json(getFeaturedSeries());
+app.get('/api/catalog/featured', async (_req, res) => {
+  res.json(await getFeaturedSeries());
 });
 
 // GET /api/catalog/genres — unique sorted genres
 // NOTE: must be registered before /api/catalog/:id
-app.get('/api/catalog/genres', (_req, res) => {
-  res.json(getGenres());
+app.get('/api/catalog/genres', async (_req, res) => {
+  res.json(await getGenres());
 });
 
 // GET /api/search?q= — search stub (workshop exercise)
-app.get('/api/search', (req, res) => {
+app.get('/api/search', async (req, res) => {
   const q = (req.query.q ?? '').toLowerCase();
-  if (!q) return res.json(catalog);
+  const all = await getAllSeries();
+  if (!q) return res.json(all);
   // TODO: implement real search logic (Workshop: full-text search exercise)
-  return res.json(catalog);
+  return res.json(all);
 });
 
 // GET /api/catalog/:id — single series
-app.get('/api/catalog/:id', (req, res) => {
-  const series = findSeries(req.params.id);
+app.get('/api/catalog/:id', async (req, res) => {
+  const series = await findSeries(req.params.id);
   if (!series) return res.status(404).json({ error: 'Not found' });
   res.json(series);
 });
 
 // GET /api/catalog/:id/more-like-this — genre-based recommendations
-app.get('/api/catalog/:id/more-like-this', (req, res) => {
-  const series = findSeries(req.params.id);
+app.get('/api/catalog/:id/more-like-this', async (req, res) => {
+  const series = await findSeries(req.params.id);
   if (!series) return res.status(404).json({ error: 'Not found' });
-  res.json(getMoreLikeThis(series));
+  res.json(await getMoreLikeThis(series));
 });
 
 app.listen(PORT, () => {
