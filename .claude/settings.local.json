@@ -20,7 +20,8 @@
       "Bash(npm run *)",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('Backend OK:', d['title']\\)\")",
       "Bash(pkill -f \"server.js\")",
-      "Bash(node *)"
+      "Bash(node *)",
+      "mcp__postgres-test__pg_execute_query"
     ]
   }
 }

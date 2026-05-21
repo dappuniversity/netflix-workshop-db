@@ -50,6 +50,10 @@ npm run dev
 - Frontend: `http://localhost:5173`
 - Backend API: `http://localhost:3001`
 
+
+Add the mcp server like this
+`claude mcp add --scope user postgres npx -- -y @henkey/postgres-mcp-server --connection-string "postgresql://localhost:5432/streamkit"`
+
 ## Database Schema
 
 ```sql
